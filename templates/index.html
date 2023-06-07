@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Password Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10%;
+            padding: 20px;
+            overflow: hidden;
+            background: linear-gradient(45deg, #00c6ff, #0072ff, #00c6ff, #0072ff);
+            background-size: 400% 400%;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+        }
+
+        form {
+            margin: 20px auto;
+            max-width: 400px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button[type="submit"] {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            font-size: 16px;
+            border-radius: 5px;
+            border: none;
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        h2 {
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        p {
+            font-size: 18px;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 10px;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        /* Media Queries */
+
+        /* Small devices (landscape phones) */
+        @media screen and (max-width: 576px) {
+            form {
+                max-width: 300px;
+            }
+        }
+
+        /* Medium devices (tablets) */
+        @media screen and (min-width: 577px) and (max-width: 992px) {
+            form {
+                max-width: 500px;
+            }
+        }
+
+        /* Large devices (desktops) */
+        @media screen and (min-width: 993px) {
+            form {
+                max-width: 600px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Password Generator</h1>
+    <form action="/generate" method="POST">
+        <label for="password_length">Password Length:</label>
+        <input type="number" id="password_length" name="password_length" min="1" max="100" required>
+        <button type="submit">Generate Password</button>
+    </form>
+    {% if password %}
+        <h2>Generated Password:</h2>
+        <p>{{ password }}</p>
+    {% endif %}
+</body>
+</html>
